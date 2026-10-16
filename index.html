@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="uz" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ozodbek & Shahruza — Bizning Estalik Saytimiz</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rose: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            900: '#881337',
+                            950: '#4c0519',
+                        },
+                        violet: {
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            900: '#4c1d95',
+                            950: '#2e1065',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        cursive: ['Dancing Script', 'cursive'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 2s infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(244, 63, 94, 0.4)' },
+                            '100%': { boxShadow: '0 0 35px rgba(244, 63, 94, 0.9)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Alohida CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="selection:bg-rose-500 selection:text-white">
+
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="content-layer min-h-screen flex flex-col justify-between pb-12">
+
+        <header class="container mx-auto px-4 pt-6">
+            <div id="autoplay-banner" class="glass-card-rose rounded-2xl p-4 mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-500 border-rose-500/30">
+                <div class="flex items-center gap-3 text-center sm:text-left">
+                    <div class="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 shrink-0 animate-bounce">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-rose-300">Romantik muhitni his eting!</h3>
+                        <p class="text-xs text-gray-300">"The Neighbourhood - Sweater Weather" qo'shig'ini tinglash uchun musiqa pleyerni yoqing.</p>
+                    </div>
+                </div>
+                <button id="banner-play-btn" onclick="togglePlay()" class="px-5 py-2.5 bg-gradient-to-r from-rose-500 to-violet-600 hover:from-rose-600 hover:to-violet-700 text-white rounded-full text-xs font-semibold shadow-lg shadow-rose-500/30 transition-all transform hover:scale-105 flex items-center gap-2 shrink-0">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Muzikani Yoqish</span>
+                </button>
+            </div>
+
+            <div class="flex justify-between items-center py-2">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-heart text-rose-500 text-2xl animate-pulse"></i>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wide bg-gradient-to-r from-rose-400 via-pink-300 to-violet-300 bg-clip-text text-transparent">
+                        O & S
+                    </span>
+                </div>
+                <div class="text-xs sm:text-sm font-medium text-rose-300/80 bg-rose-950/40 px-3 py-1.5 rounded-full border border-rose-800/40">
+                    <i class="fa-solid fa-calendar-heart mr-1.5 text-rose-400"></i>26.09.2026
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 space-y-12 mt-4">
+
+            <section class="text-center py-8 relative">
+                <div class="inline-block relative">
+                    <span class="font-cursive text-3xl sm:text-5xl text-rose-400 opacity-90 block mb-2">Cheksiz Sevgi Chegarasi</span>
+                    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-rose-200 via-rose-400 to-violet-300 bg-clip-text text-transparent leading-tight py-1">
+                        Ozodbek <span class="text-rose-500 font-cursive text-4xl sm:text-6xl">&amp;</span> Shahruza
+                    </h1>
+                    <div class="w-32 h-1 bg-gradient-to-r from-transparent via-rose-500 to-transparent mx-auto mt-4 rounded-full"></div>
+                </div>
+                <p class="mt-4 text-sm sm:text-base text-gray-300 max-w-lg mx-auto font-light leading-relaxed">
+                    Ushbu sahifa — bizning birgalikdagi sayohatimiz, samimiy his-tuyg'ularimiz va baxtli onlarimiz uchun yaratilgan xotira maskanidir.
+                </p>
+            </section>
+
+            <!-- Counter Section -->
+            <section class="glass-card rounded-3xl p-6 sm:p-8 max-w-4xl mx-auto border-rose-500/20 relative overflow-hidden">
+                <div class="text-center mb-8">
+                    <span class="text-xs uppercase tracking-widest text-rose-400 font-semibold bg-rose-500/10 px-3 py-1 rounded-full border border-rose-500/20">
+                        Bizning Vaqt Hisoblagichimiz
+                    </span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold mt-3 text-rose-100">
+                        Biz tanishganimizga qancha vaqt bo'ldi?
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">26-Sentabr 2026-yildan beri birga bosib o'tilgan har bir soniya qadrli</p>
+                </div>
+
+                <div id="counter-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 text-center">
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="years" class="text-3xl sm:text-4xl font-extrabold text-white font-serif">0</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Yil</span>
+                    </div>
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="months" class="text-3xl sm:text-4xl font-extrabold text-white font-serif">0</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Oylar</span>
+                    </div>
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="days" class="text-3xl sm:text-4xl font-extrabold text-white font-serif">0</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Kunlar</span>
+                    </div>
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="hours" class="text-3xl sm:text-4xl font-extrabold text-white font-serif">00</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Soatlar</span>
+                    </div>
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="minutes" class="text-3xl sm:text-4xl font-extrabold text-white font-serif">00</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Daqiqalar</span>
+                    </div>
+                    <div class="glass-card-rose p-4 rounded-2xl flex flex-col justify-center items-center">
+                        <span id="seconds" class="text-3xl sm:text-4xl font-extrabold text-rose-400 font-serif">00</span>
+                        <span class="text-xs font-medium text-rose-300 mt-1">Saniyalik</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audio Player -->
+            <section class="max-w-xl mx-auto">
+                <div class="glass-card-rose rounded-3xl p-6 relative overflow-hidden border border-rose-500/30">
+                    <div class="flex flex-col sm:flex-row items-center gap-6">
+                        <div class="relative shrink-0">
+                            <div id="vinyl-disc" class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-slate-900 border-4 border-rose-500/40 flex items-center justify-center shadow-2xl relative transition-transform duration-700">
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-rose-600 to-violet-800 flex items-center justify-center text-white text-xs font-bold">
+                                    <i class="fa-solid fa-heart text-rose-200 text-lg"></i>
+                                </div>
+                            </div>
+                            <div id="playing-wave" class="hidden absolute -top-1 -right-1 bg-rose-600 p-2 rounded-full shadow-lg">
+                                <div class="sound-wave flex items-end h-3">
+                                    <span></span><span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 text-center sm:text-left w-full">
+                            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 uppercase">Bizning Qo'shiq</span>
+                            <h3 class="font-serif text-xl font-bold text-white mt-1">Sweater Weather</h3>
+                            <p class="text-xs text-gray-300 font-medium">The Neighbourhood</p>
+
+                            <div class="mt-4">
+                                <div class="w-full bg-gray-700/50 rounded-full h-1.5 cursor-pointer relative" id="progress-container" onclick="setAudioProgress(event)">
+                                    <div id="progress-bar" class="bg-gradient-to-r from-rose-500 to-violet-500 h-1.5 rounded-full w-0 transition-all duration-200"></div>
+                                </div>
+                                <div class="flex justify-between text-[10px] text-gray-400 mt-1">
+                                    <span id="current-time">0:00</span>
+                                    <span id="duration-time">--:--</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-center sm:justify-start gap-4 mt-3">
+                                <button onclick="togglePlay()" id="main-play-btn" class="w-12 h-12 rounded-full bg-rose-500 hover:bg-rose-600 text-white flex items-center justify-center shadow-lg shadow-rose-500/40 transition transform active:scale-95">
+                                    <i id="main-play-icon" class="fa-solid fa-play text-lg ml-0.5"></i>
+                                </button>
+                                <div class="flex items-center gap-2 text-xs text-gray-300">
+                                    <i class="fa-solid fa-volume-high text-rose-400"></i>
+                                    <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" onchange="adjustVolume(this.value)" class="w-20 accent-rose-500 h-1 bg-gray-700 rounded-lg cursor-pointer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <audio id="bg-audio" preload="metadata" loop>
+                    <source src="the neighbothood.mp3" type="audio/mpeg">
+                </audio>
+            </section>
+
+            <!-- Dil Izhorlari -->
+            <section class="max-w-4xl mx-auto">
+                <div class="text-center mb-6">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-rose-100">Bizning Dil Izhorlarimiz</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">Har bir kartani ustiga bosing va shirin xatlarni o'qing</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:border-rose-500/50 hover:-translate-y-1 group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold text-rose-400">01. Birinchi Taassurot</span>
+                            <i class="fa-solid fa-envelope-open-text text-rose-400 group-hover:scale-110 transition"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-rose-200">Sening Tabassuming</h3>
+                        <p class="font-serif italic text-xs text-gray-300 mt-2 leading-relaxed hidden-text line-clamp-3">
+                            26-Sentabrda hayotimga kirib kelganingda, dunyo vaqtincha to'xtab qolganday bo'ldi. Sening birgina tabassuming qalbdagi barcha g'uborlarni yuvib ketdi.
+                        </p>
+                        <span class="text-[10px] text-rose-400/80 mt-3 block font-semibold">Ko'proq o'qish uchun bosing &rarr;</span>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:border-rose-500/50 hover:-translate-y-1 group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold text-rose-400">02. Bizning Qo'shiq</span>
+                            <i class="fa-solid fa-compact-disc text-rose-400 group-hover:rotate-180 transition duration-500"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-rose-200">Sweater Weather</h3>
+                        <p class="font-serif italic text-xs text-gray-300 mt-2 leading-relaxed hidden-text line-clamp-3">
+                            Ushbu kuyni har gal tinglaganimda, faqat sen bilan o'tgan baxtli daqiqalar va iliq quchoqlashuvlar yodimga tushadi. Sen mening eng sevimli kuyimsan, Shahruza.
+                        </p>
+                        <span class="text-[10px] text-rose-400/80 mt-3 block font-semibold">Ko'proq o'qish uchun bosing &rarr;</span>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="glass-card rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:border-rose-500/50 hover:-translate-y-1 group">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-semibold text-rose-400">03. Abadiy Va'da</span>
+                            <i class="fa-solid fa-infinity text-rose-400 group-hover:scale-110 transition"></i>
+                        </div>
+                        <h3 class="font-serif text-lg font-bold text-rose-200">Kelajakka Nigoh</h3>
+                        <p class="font-serif italic text-xs text-gray-300 mt-2 leading-relaxed hidden-text line-clamp-3">
+                            Biz birga yaratadigan har bir xotira oltindan qimmatli. Necha yillar o'tmasin, birga o'tgan har bir kunimiz xuddi birinchi kungi kabi hayajonli bo'lib qoladi.
+                        </p>
+                        <span class="text-[10px] text-rose-400/80 mt-3 block font-semibold">Ko'proq o'qish uchun bosing &rarr;</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fotogalereya Bo'limi -->
+            <section class="max-w-5xl mx-auto">
+                <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                    <div>
+                        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-rose-100">Bizning Fotogalereyamiz</h2>
+                        <p class="text-xs sm:text-sm text-gray-400 mt-1">Eng go'zal onlarni birgalikda saqlaymiz</p>
+                    </div>
+
+                    <label class="cursor-pointer px-4 py-2 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 rounded-xl text-xs font-semibold transition flex items-center gap-2 shadow-md">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Yangi Rasm Qo'shish</span>
+                        <input type="file" id="image-upload" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                    </label>
+                </div>
+
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="glass-card rounded-2xl overflow-hidden group relative h-64 border border-rose-500/20">
+                        <img src="xotira 1.jpg" alt="Xotira 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="text-[10px] uppercase tracking-wider text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800/50">26.09.2026</span>
+                            <h4 class="font-serif text-sm font-bold text-white mt-1">Ajoyib Uchrashuv</h4>
+                            <p class="text-xs text-gray-300 font-light">Tanishgan baxtli kunimiz</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl overflow-hidden group relative h-64 border border-rose-500/20">
+                        <img src="xotira 2.jpg" alt="Xotira 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="text-[10px] uppercase tracking-wider text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800/50">Bizning Xotira</span>
+                            <h4 class="font-serif text-sm font-bold text-white mt-1">Shirin Onlar</h4>
+                            <p class="text-xs text-gray-300 font-light">Har bir soniya sen bilan go'zal</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl overflow-hidden group relative h-64 border border-rose-500/20">
+                        <img src="xotira 3.jpg" alt="Xotira 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80 group-hover:opacity-90 transition"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <span class="text-[10px] uppercase tracking-wider text-rose-300 bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800/50">Cheksiz Mehr</span>
+                            <h4 class="font-serif text-sm font-bold text-white mt-1">Birgalikda Abadiy</h4>
+                            <p class="text-xs text-gray-300 font-light">Ozodbek va Shahruza</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rejalar va Orzular -->
+            <section class="max-w-3xl mx-auto">
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border-rose-500/20">
+                    <div class="text-center mb-6">
+                        <i class="fa-solid fa-list-check text-rose-400 text-2xl mb-2"></i>
+                        <h2 class="font-serif text-2xl font-bold text-rose-100">Bizning Rejalarimiz &amp; Orzularimiz</h2>
+                        <p class="text-xs text-gray-400 mt-1">Kelajakda birgalikda amalga oshiradigan ishlarimiz</p>
+                    </div>
+
+                    <div class="flex gap-2 mb-6">
+                        <input type="text" id="new-plan-input" placeholder="Yangi reja yoki orzuni yozing..." class="flex-1 bg-slate-900/60 border border-rose-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-rose-500 transition">
+                        <button onclick="addNewPlan()" class="px-5 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-semibold rounded-xl text-xs transition shadow-lg shadow-rose-500/30 shrink-0">
+                            <i class="fa-solid fa-plus mr-1"></i> Qo'shish
+                        </button>
+                    </div>
+
+                    <div class="space-y-3" id="bucket-list">
+                        <!-- Rejalar JavaScript orqali dinamik yuklanadi -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shahruzaga Sevgi Yuborish -->
+            <section class="text-center py-6">
+                <button onclick="openLoveScene()" class="px-8 py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-violet-600 hover:from-rose-600 hover:to-violet-700 text-white rounded-full text-base sm:text-lg font-bold shadow-xl shadow-rose-500/40 transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3 mx-auto">
+                    <i class="fa-solid fa-heart animate-pulse text-2xl"></i>
+                    <span class="font-cursive text-2xl tracking-wide">Shahruzaga Sevgi Yuborish</span>
+                </button>
+            </section>
+
+        </main>
+
+        <footer class="text-center mt-16 text-xs text-gray-500">
+            <p>Sevgi bilan yaratildi &bull; Ozodbek &amp; Shahruza &copy; 2026</p>
+        </footer>
+
+    </div>
+
+    <!-- Romantik Sahna -->
+    <div id="love-scene">
+        <div id="love-fireworks"></div>
+
+        <div id="love-start-card" class="love-scene-card">
+            <span class="love-scene-heart">💖</span>
+            <h2 class="text-4xl sm:text-5xl font-bold font-cursive text-rose-200 mb-4">Shahruza...</h2>
+            <p class="font-serif italic text-base text-purple-200 leading-relaxed mb-2">
+                Senga atalgan eng samimiy va maxsus maktubni ko'rishga tayyormisan?
+            </p>
+            <button onclick="startLoveFireworksAndLetter()" class="love-ready-btn">
+                ✨ Tayyorman!
+            </button>
+        </div>
+
+        <div id="love-letter" hidden>
+            <h2 class="love-letter-title">Mening Go'zal Shahruzamga... ❤️</h2>
+            <div class="love-letter-body space-y-4">
+                <p>
+                    Sening hayotimga kirib kelishing bilan mening dunyoyim tamoman o'zgardi. Har bir bosgan qadaming, har bir tabassuming menga cheksiz quvonch hamda iliqlik bag'ishlaydi.
+                </p>
+                <p>
+                    26-Sentabr kuni boshlangan ushbu muqaddas tuyg'ularimiz abadiy davom etishini xohlayman. Sen mening eng go'zal va orzu qilgan maskanimdirsan.
+                </p>
+            </div>
+            <p class="love-signature">
+                Cheksiz sevgi va mehr bilan, <br>
+                Ozodbek ✨
+            </p>
+            <div class="text-center mt-8">
+                <button onclick="closeLoveScene()" class="px-6 py-2.5 bg-rose-500/20 hover:bg-rose-500/40 border border-rose-400/40 rounded-full text-xs text-rose-200 font-semibold transition">
+                    Yopish
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alohida JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

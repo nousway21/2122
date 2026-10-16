@@ -1,0 +1,279 @@
+
+body {
+    background: linear-gradient(135deg, #0f0c20 0%, #1a0b2e 50%, #2a0826 100%);
+    color: #f8fafc;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-card-rose {
+    background: rgba(244, 63, 94, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(244, 63, 94, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(244, 63, 94, 0.15);
+}
+
+#canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.content-layer {
+    position: relative;
+    z-index: 10;
+}
+
+.sound-wave span {
+    display: inline-block;
+    width: 3px;
+    height: 12px;
+    background-color: #f43f5e;
+    margin: 0 1px;
+    border-radius: 3px;
+    animation: wave 1.2s infinite ease-in-out;
+}
+
+.sound-wave span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.sound-wave span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.sound-wave span:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes wave {
+    0%, 100% {
+        height: 4px;
+    }
+
+    50% {
+        height: 18px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f0c20;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e11d48;
+    border-radius: 4px;
+}
+
+/* Romantik sahna CSS */
+#love-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: radial-gradient(ellipse at center, #351044 0%, #160b28 60%, #080611 100%);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#love-scene.love-scene-visible {
+    display: flex;
+    opacity: 1;
+}
+
+.love-scene-card {
+    width: min(100%, 540px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 36px 28px;
+    text-align: center;
+    border: 1px solid rgba(251, 113, 133, .35);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .08);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 70px rgba(244, 63, 94, .2);
+    animation: loveCardEnter .8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    position: relative;
+    z-index: 2;
+}
+
+.love-ready-btn {
+    margin-top: 28px;
+    padding: 16px 40px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 999px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Dancing Script', cursive;
+    letter-spacing: 1px;
+    background: linear-gradient(110deg, #e11d48, #be4bdb, #7c3aed);
+    box-shadow: 0 0 35px rgba(244,63,94,.5);
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.love-ready-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 55px rgba(244,63,94,.8);
+}
+
+#love-fireworks {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.love-firework {
+    position: absolute;
+    left: var(--fx);
+    top: var(--fy);
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+.love-firework .spark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--fc);
+    box-shadow: 0 0 8px 2px var(--fc), 0 0 16px 4px rgba(255,255,255,.4);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    animation: loveSparkBurst 1.6s cubic-bezier(.12, .72, .18, 1) forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes loveSparkBurst {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateX(0) scale(.35);
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(var(--angle)) translateX(var(--distance)) scale(.15);
+    }
+}
+
+#love-letter {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 540px);
+    margin: auto;
+    padding: 32px 28px;
+    text-align: left;
+    border: 1px solid rgba(251,113,133,.5);
+    border-radius: 28px;
+    background: linear-gradient(145deg, rgba(45,15,55,.96), rgba(20,10,35,.98));
+    box-shadow: 0 0 65px rgba(244,63,94,.3);
+    animation: loveLetterEnter 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+#love-letter[hidden] {
+    display: none !important;
+}
+
+.love-letter-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(32px, 6vw, 44px);
+    color: #fecdd3;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 12px rgba(244,63,94,.4);
+}
+
+.love-letter-body {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    line-height: 2;
+    color: #f3e8ff;
+}
+
+.love-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px !important;
+    color: #fda4af !important;
+    text-align: right;
+    margin-top: 24px;
+    font-style: normal;
+}
+
+@keyframes loveCardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes loveLetterEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.3) translateY(120px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.love-scene-heart {
+    display: inline-block;
+    font-size: 54px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 18px rgba(244,63,94,.8));
+    animation: loveHeartBeat 1.4s ease-in-out infinite;
+}
+
+@keyframes loveHeartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.18);
+    }
+}
